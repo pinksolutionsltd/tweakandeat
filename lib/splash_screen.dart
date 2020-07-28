@@ -10,11 +10,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-    initState() {
+  initState() {
     super.initState();
     Timer(
-        Duration(seconds: 5),
-        () => Navigator.of(context).pushReplacement(
+        Duration(seconds: 4),
+            () => Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (BuildContext context) => HomePage())));
   }
 

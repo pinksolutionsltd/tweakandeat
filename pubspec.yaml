@@ -34,10 +34,12 @@ dependencies:
   connectivity: ^0.4.9
   data_connection_checker: ^0.3.4
   flutter_launcher_icons: ^0.7.5
+  font_awesome_flutter: ^8.8.1
+  animated_dialog_box: ^0.0.2
 
 
 flutter_icons:
-  image_path: "assets/icon.jpg"
+  image_path: "assets/lunchericon.jpg"
   ios: true
   android: true
 

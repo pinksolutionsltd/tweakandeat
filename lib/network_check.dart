@@ -80,7 +80,7 @@ class _CheckNetworkPageState extends State<CheckNetworkPage> {
   Widget build(BuildContext context) {
     if(getNet)
       return SplashScreen();
-    return Status();
+    return Status(internetStatus: Internetstatus,);
   }
 }
 

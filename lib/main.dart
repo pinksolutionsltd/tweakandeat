@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:flutter/services.dart';
-import 'package:tweakandeat/splash_screen.dart';
-import 'package:tweakandeat/splash_screen.dart';
-
-import 'home_page.dart';
 import 'network_check.dart';
 
 void main() {
@@ -17,8 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Diet Club',
+      title: 'Tweak & Eat',
       home: CheckNetworkPage(),
+
     );
   }
 }
