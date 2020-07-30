@@ -36,7 +36,7 @@ class _CheckNetworkPageState extends State<CheckNetworkPage> {
     // Simple check to see if we have internet
     print("The statement 'this machine is connected to the Internet' is: ");
     getNet = await DataConnectionChecker().hasConnection;
-    print(getNet);
+    print(getNet.toString());
     // returns a bool
 
     // We can also get an enum instead of a bool
@@ -80,7 +80,7 @@ class _CheckNetworkPageState extends State<CheckNetworkPage> {
   Widget build(BuildContext context) {
     if(getNet)
       return SplashScreen();
-    return Status(internetStatus: Internetstatus,);
+    return Status(internetStatus: Internetstatus);
   }
 }
 

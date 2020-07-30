@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 import 'helper.dart';
 import 'home_page.dart';
@@ -14,8 +18,34 @@ class Status extends StatefulWidget {
 }
 
 class _StatusState extends State<Status> {
+
+  bool _getNet = false;
+_checkNetwork()async{
+  _getNet = await DataConnectionChecker().hasConnection;
+  print(_getNet.toString());
+}
+
+
+  _showToast() {
+    Fluttertoast.showToast(
+        msg: "Please Check Internet Connection",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+    setState((){
+      _checkNetwork();
+    });
+
     return Scaffold(
 
 
@@ -44,10 +74,13 @@ class _StatusState extends State<Status> {
           RaisedButton(
             color: Color(Helper.getHexToInt("#007d99")),
             onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomePage()),
-              );
+
+                if(_getNet){
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()),);
+                }
+                else{
+                  _showToast();
+                }
             },
             child: Text('Try Again',
               style: TextStyle(fontSize: 20.0, color: Colors.white),),
