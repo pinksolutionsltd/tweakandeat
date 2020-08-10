@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-
 import 'helper.dart';
 import 'home_page.dart';
-import 'network_check.dart';
 
 
 class Status extends StatefulWidget {
@@ -54,7 +50,7 @@ _checkNetwork()async{
         children: <Widget>[
 
           Container(
-            child: Image.asset('images/myicon.png'),
+            child: Image.asset('images/datacheck.png'),
             height: 400.0,
             width: 400.0,
           ),
@@ -64,26 +60,28 @@ _checkNetwork()async{
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
-                  color: Colors.teal
+                  color: Colors.pink
               ),),
 
           ),
 
-          Divider(height: 20.0,),
 
-          RaisedButton(
-            color: Color(Helper.getHexToInt("#007d99")),
-            onPressed: (){
+          Padding(
+            padding: EdgeInsets.all(30.0),
+            child: RaisedButton(
+              color: Color(Helper.getHexToInt("#00b050")),
+              onPressed: (){
 
-                if(_getNet){
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()),);
-                }
-                else{
-                  _showToast();
-                }
-            },
-            child: Text('Try Again',
-              style: TextStyle(fontSize: 20.0, color: Colors.white),),
+                  if(_getNet){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()),);
+                  }
+                  else{
+                    _showToast();
+                  }
+              },
+              child: Text('Try Again',
+                style: TextStyle(fontSize: 20.0, color: Colors.white),),
+            ),
           ),
 
         ],

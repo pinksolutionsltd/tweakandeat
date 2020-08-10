@@ -8,18 +8,15 @@ import 'dart:io';
 import 'helper.dart';
 import 'home_page.dart';
 
-
 class FAQPage extends StatefulWidget {
   @override
   _FAQPageState createState() => _FAQPageState();
 }
 
 class _FAQPageState extends State<FAQPage> {
-
   @override
   Widget build(BuildContext context) {
-
-    Future<bool> _checkNetwork()async{
+    Future<bool> _checkNetwork() async {
       try {
         final result = await InternetAddress.lookup('google.com');
         if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -50,8 +47,6 @@ class _FAQPageState extends State<FAQPage> {
 
     return SafeArea(
       child: WebviewScaffold(
-
-
         url: "http://tweakeat.dietclub.mobi/TermsnCondition.aspx",
 
         withZoom: true,
@@ -60,14 +55,16 @@ class _FAQPageState extends State<FAQPage> {
         initialChild: Container(
           color: Color(Helper.getHexToInt("#58EAF8")),
           child: const Center(
-            child: Text('Please Wait.....',
+            child: Text(
+              'Please Wait.....',
               style: TextStyle(
                 fontSize: 28.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-              ),),
-          ),),
-
+              ),
+            ),
+          ),
+        ),
 
         bottomNavigationBar: new BottomAppBar(
           color: Colors.white,
@@ -75,51 +72,57 @@ class _FAQPageState extends State<FAQPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-
-              new IconButton(icon: Icon(FontAwesomeIcons.home, color: Color(Helper.getHexToInt("#E9003D")),),
-                  onPressed:()async{
-
-                    var value = await _checkNetwork();
-
-                    if(value){
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()),);
-                    }
-                    else{
-                      _showToast();
-                    }
-
-                  }),
-
-
-              GestureDetector(
-                onTap: ()async{
+              FlatButton(
+                child: Image.asset(
+                  'images/home.png',
+                  height: 25.0,
+                  width: 25.0,
+                ),
+                onPressed: () async {
                   var value = await _checkNetwork();
 
-                  if(value){
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => FAQPage()),);
-                  }
-                  else{
+                  if (value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  } else {
                     _showToast();
                   }
-
                 },
-                child: Image.asset('images/faq.png'),
               ),
+              GestureDetector(
+                onTap: () async {
+                  var value = await _checkNetwork();
 
-
+                  if (value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FAQPage()),
+                    );
+                  } else {
+                    _showToast();
+                  }
+                },
+                child: Image.asset(
+                  'images/faq.png',
+                  height: 25.0,
+                  width: 25.0,
+                ),
+              ),
               FlatButton(
-                child: Text('Exit', style: TextStyle(color: Color(Helper.getHexToInt("#E9003D"))),),
-                onPressed: (){
+                child: Image.asset(
+                  'images/exit.png',
+                  height: 25.0,
+                  width: 25.0,
+                ),
+                onPressed: () {
                   SystemNavigator.pop();
                 },
               ),
             ],
           ),
         ),
-
-
-
-
 
 //      body: Column(
 //        children: <Widget>[

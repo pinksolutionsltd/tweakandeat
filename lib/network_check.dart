@@ -14,8 +14,8 @@ class _CheckNetworkPageState extends State<CheckNetworkPage> {
 
   StreamSubscription<DataConnectionStatus> listener;
 
-  var Internetstatus = "Unknown";
-  bool getNet = false;
+  var Internetstatus = "Your Internet connection is poor...";
+  bool getNet = true;
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _CheckNetworkPageState extends State<CheckNetworkPage> {
           });
           break;
         case DataConnectionStatus.disconnected:
-          Internetstatus="No Data Connection";
+          Internetstatus="Your data connectivity lost.\n Please try again !";
           print('You are disconnected from the internet.');
           setState(() {
 
