@@ -72,44 +72,42 @@ class _FAQPageState extends State<FAQPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
+//              FlatButton(
+//                child: Image.asset(
+//                  'images/home.png',
+//                  height: 25.0,
+//                  width: 25.0,
+//                ),
+//                onPressed: () async {
+//                  var value = await _checkNetwork();
+//
+//                  if (value) {
+//                    Navigator.push(
+//                      context,
+//                      MaterialPageRoute(builder: (context) => HomePage()),
+//                    );
+//                  } else {
+//                    _showToast();
+//                  }
+//                },
+//              ),
+
               FlatButton(
-                child: Image.asset(
-                  'images/home.png',
-                  height: 25.0,
-                  width: 25.0,
-                ),
-                onPressed: () async {
+                child: Image.asset('images/faq.png', height: 25.0,width: 25.0,),
+                onPressed: ()async{
                   var value = await _checkNetwork();
 
-                  if (value) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
-                  } else {
+                  if(value){
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => FAQPage()),);
+                  }
+                  else{
                     _showToast();
                   }
                 },
               ),
-              GestureDetector(
-                onTap: () async {
-                  var value = await _checkNetwork();
 
-                  if (value) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FAQPage()),
-                    );
-                  } else {
-                    _showToast();
-                  }
-                },
-                child: Image.asset(
-                  'images/faq.png',
-                  height: 25.0,
-                  width: 25.0,
-                ),
-              ),
+
+
               FlatButton(
                 child: Image.asset(
                   'images/exit.png',
